@@ -25,5 +25,12 @@
   "bugs": {
     "url": "https://github.com/HFOSSedu/kitcon/issues"
   },
-  "homepage": "https://github.com/HFOSSedu/kitcon#readme"
+  "homepage": "https://github.com/HFOSSedu/kitcon#readme",
+  "release": {
+    "branches": [ "main" ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/github"
+    ]
+  }
 }

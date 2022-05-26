@@ -15,31 +15,36 @@
 # You should have received a copy of the GNU General Public License
 # along with LibreFoodPantry.  If not, see <http://www.gnu.org/licenses/>.
 
-name: push-docker-images
+name: release
 
 on:
   push:
     branches:
-      - 'main'
-    tags:
-      - 'v*'
-  pull_request:
-    branches:
-      - 'main'
+      - main
 
 jobs:
-  docker:
+  release:
+    name: Release
     runs-on: ubuntu-latest
     steps:
       -
         name: Checkout
         uses: actions/checkout@v3
       -
-        name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v4
+        uses: docker://ghcr.io/codfish/semantic-release-action@sha256:43a9e5ce88fc0460c22f3f3c45e39ac99e1cefff2ffd76c6e8c34306c8ccec91
+        id: semantic
         with:
-          images: ghcr.io/hfossedu/kitcon
+          branches: |
+            [
+              'main'
+            ]
+          plugins: |
+            [
+              '@semantic-release/commit-analyzer',
+              '@semantic-release/github'
+            ]
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       -
         name: Log in to the Container registry
         uses: docker/login-action@v2
@@ -50,8 +55,12 @@ jobs:
       -
         name: Build and push
         uses: docker/build-push-action@v3
+        if: steps.semantic.outputs.new-release-published == 'true'
         with:
-          context: .
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          context: ./src
+          file: ./src/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/hfossedu/kitcon:${{ steps.semantic.outputs.release-version }}
+            ghcr.io/hfossedu/kitcon:${{ steps.semantic.outputs.release-major }}.${{ steps.semantic.outputs.release-minor }}
+            ghcr.io/hfossedu/kitcon:${{ steps.semantic.outputs.release-major }}
