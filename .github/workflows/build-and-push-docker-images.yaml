@@ -15,17 +15,10 @@
 # You should have received a copy of the GNU General Public License
 # along with LibreFoodPantry.  If not, see <http://www.gnu.org/licenses/>.
 
-name: push-docker-images
+name: build-and-push-docker-images
 
 on:
-  push:
-    branches:
-      - 'main'
-    tags:
-      - 'v*'
   pull_request:
-    branches:
-      - 'main'
 
 
 jobs:
@@ -49,7 +42,6 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
       -
         name: Log in to the Container registry
-        if: github.event_name != 'pull_request'
         uses: docker/login-action@v2
         with:
           registry: ghcr.io/hfossedu/kitcon
@@ -61,6 +53,6 @@ jobs:
         with:
           context: ./src
           file: ./src/Dockerfile
-          push: ${{ github.event_name != 'pull_request' }}
+          push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
