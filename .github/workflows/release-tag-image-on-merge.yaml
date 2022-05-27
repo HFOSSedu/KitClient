@@ -15,19 +15,32 @@
 # You should have received a copy of the GNU General Public License
 # along with LibreFoodPantry.  If not, see <http://www.gnu.org/licenses/>.
 
-name: build-and-push-docker-images
+name: release-tag-image-on-merge
 
 on:
   pull_request:
-
+    types:
+      - closed
 
 jobs:
-  docker:
+  release:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       -
         name: Checkout
         uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+      -
+        name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v3
+        with:
+          semantic_version: 19.0.2
+          branches: [ "main" ]
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       -
         name: Docker meta
         id: meta
@@ -56,3 +69,4 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=registry,ref=ghcr.io/hfossedu/kitcon:${{ pull_request.head.ref }}
