@@ -37,7 +37,8 @@ jobs:
         uses: cycjimmy/semantic-release-action@v3
         with:
           semantic_version: 19.0.2
-          branches: [ "main" ]
+          branches: |
+            [ "main" ]
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
