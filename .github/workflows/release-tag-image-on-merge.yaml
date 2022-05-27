@@ -69,4 +69,4 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=registry,ref=ghcr.io/hfossedu/kitcon:${{ pull_request.head.ref }}
+          cache-from: type=registry,ref=ghcr.io/hfossedu/kitcon:pr-${{ pull_request.number }}
