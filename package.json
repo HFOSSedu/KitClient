@@ -25,5 +25,7 @@
   "bugs": {
     "url": "https://github.com/HFOSSedu/kitcon/issues"
   },
-  "homepage": "https://github.com/HFOSSedu/kitcon#readme"
+  "homepage": "https://github.com/HFOSSedu/kitcon#readme",
+  "release": {
+  }
 }
