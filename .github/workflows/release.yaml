@@ -36,6 +36,7 @@ jobs:
         name: Setup Node.js
         uses: actions/setup-node@v2
         with:
+<<<<<<< HEAD:.github/workflows/release.yaml
           node-version: 'lts/*'
       -
         name: Install dependencies
@@ -45,3 +46,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release
+=======
+          push: true
+          context: ./src
+          file: ./src/Dockerfile
+          cache-from: type=registry,ref=ghcr.io/hfossedu/kitcon:pr-${{ github.event.pull_request.number }}
+          cache-to: type=registry,ref=ghcr.io/hfossedu/kitcon:main,mode=max
+
+>>>>>>> main:.github/workflows/merge.yaml
