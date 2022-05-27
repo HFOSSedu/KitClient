@@ -28,33 +28,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
-        name: Checkout
-        uses: actions/checkout@v3
-        with:
-          persist-credentials: false
-      -
-        name: Semantic Release
-        uses: cycjimmy/semantic-release-action@v3
-        with:
-          semantic_version: 19.0.2
-          branches: |
-            [ "main" ]
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      -
-        name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v4
-        with:
-          images: |
-            ghcr.io/hfossedu/kitcon
-          tags: |
-            type=ref,event=branch
-            type=ref,event=pr
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-      -
         name: Log in to the Container registry
         uses: docker/login-action@v2
         with:
@@ -65,9 +38,5 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: ./src
-          file: ./src/Dockerfile
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=registry,ref=ghcr.io/hfossedu/kitcon:pr-${{ github.event.pull_request.number }}
+          cache-to: type=registry,ref=ghcr.io/hfossedu/kitcon:main
