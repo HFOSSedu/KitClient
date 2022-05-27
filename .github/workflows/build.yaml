@@ -15,18 +15,20 @@
 # You should have received a copy of the GNU General Public License
 # along with LibreFoodPantry.  If not, see <http://www.gnu.org/licenses/>.
 
-name: build-and-push-docker-image-on-pr
+name: build
 
 on:
   pull_request:
 
 jobs:
-  docker:
+  build:
     runs-on: ubuntu-latest
     steps:
       -
         name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       -
         name: Docker meta
         id: meta
