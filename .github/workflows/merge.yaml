@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with LibreFoodPantry.  If not, see <http://www.gnu.org/licenses/>.
 
-name: release-tag-image-on-merge
+name: merge
 
 on:
   pull_request:
@@ -39,6 +39,8 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
+          context: ./src
+          file: ./src/Dockerfile
           cache-from: type=registry,ref=ghcr.io/hfossedu/kitcon:pr-${{ github.event.pull_request.number }}
           cache-to: type=registry,ref=ghcr.io/hfossedu/kitcon:main,mode=max
 
