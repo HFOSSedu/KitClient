@@ -64,3 +64,4 @@ jobs:
             ghcr.io/hfossedu/kitcon:${{ steps.semantic.outputs.release-version }}
             ghcr.io/hfossedu/kitcon:${{ steps.semantic.outputs.release-major }}.${{ steps.semantic.outputs.release-minor }}
             ghcr.io/hfossedu/kitcon:${{ steps.semantic.outputs.release-major }}
+            ghcr.io/hfossedu/kitcon:latest

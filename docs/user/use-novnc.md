@@ -26,14 +26,14 @@ If you want a smoother interface, consider
 2. Open a terminal and run
 
     ```bash
-    docker run --name kitcon --detach -p 6901:6901 hfossedu/kitcon
+    docker run --name kitcon --detach -p 6901:6901 ghcr.io/hfossedu/kitcon
     ```
 
     Or if you want to run a specific version of kitcon, run the following
     replacing `VERSION` with the version you want.
 
     ```bash
-    docker run --name kitcon --detach -p 6901:6901 hfossedu/kitcon:VERSION
+    docker run --name kitcon --detach -p 6901:6901 ghcr.io/hfossedu/kitcon:VERSION
     ```
 
 3. Open a browser to <!-- markdown-link-check-disable --><http://localhost:6901><!-- markdown-link-check-enabled -->

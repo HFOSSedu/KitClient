@@ -24,14 +24,14 @@ and is available for most operating systems.
 2. Open a terminal and run
 
     ```bash
-    docker run --name kitcon --detach -p 5901:5901 hfossedu/kitcon
+    docker run --name kitcon --detach -p 5901:5901 ghcr.io/hfossedu/kitcon
     ```
 
     Or if you want to run a specific version of kitcon, run the following
     replacing `VERSION` with the version you want.
 
     ```bash
-    docker run --name kitcon --detach -p 5901:5901 hfossedu/kitcon:VERSION
+    docker run --name kitcon --detach -p 5901:5901 ghcr.io/hfossedu/kitcon:VERSION
     ```
 
 3. Run TigerVNC
