@@ -38,5 +38,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v3
         with:
+          push: true
           cache-from: type=registry,ref=ghcr.io/hfossedu/kitcon:pr-${{ github.event.pull_request.number }}
-          cache-to: type=registry,ref=ghcr.io/hfossedu/kitcon:main
+          cache-to: type=registry,ref=ghcr.io/hfossedu/kitcon:main,mode=max
+
