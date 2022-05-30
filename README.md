@@ -8,7 +8,7 @@ A development environment for use with the Kits.
 docker run --name KitClient --detach -p 6901:6901 -p 5901:5901 ghcr.io/hfossedu/kitclient
 ```
 
-Open a browser to http://localhost:6901 or open a VNC clients to localhost:5901.
+Open a browser to <http://localhost:6901> or open a [VNC client](https://tigervnc.org/) to localhost:5901.
 
 Password: `headless`
 
