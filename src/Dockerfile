@@ -1,5 +1,7 @@
 FROM accetto/ubuntu-vnc-xfce-firefox-g3@sha256:62f365d41814643651a5b5c7ea7a397e692b40126a903555993999cae150b199
 
+LABEL org.opencontainers.image.source = "https://github.com/HFOSSedu/KitClient"
+
 USER root
 
 # Install common developer tools

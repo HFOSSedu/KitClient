@@ -49,7 +49,7 @@ jobs:
         name: Log in to the Container registry
         uses: docker/login-action@v2
         with:
-          registry: ghcr.io/hfossedu/kitcon
+          registry: ghcr.io/hfossedu/kitclient
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       -
@@ -61,7 +61,7 @@ jobs:
           file: ./src/Dockerfile
           push: true
           tags: |
-            ghcr.io/hfossedu/kitcon:${{ steps.semantic.outputs.release-version }}
-            ghcr.io/hfossedu/kitcon:${{ steps.semantic.outputs.release-major }}.${{ steps.semantic.outputs.release-minor }}
-            ghcr.io/hfossedu/kitcon:${{ steps.semantic.outputs.release-major }}
-            ghcr.io/hfossedu/kitcon:latest
+            ghcr.io/hfossedu/kitclient:${{ steps.semantic.outputs.release-version }}
+            ghcr.io/hfossedu/kitclient:${{ steps.semantic.outputs.release-major }}.${{ steps.semantic.outputs.release-minor }}
+            ghcr.io/hfossedu/kitclient:${{ steps.semantic.outputs.release-major }}
+            ghcr.io/hfossedu/kitclient:latest

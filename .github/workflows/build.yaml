@@ -35,7 +35,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            ghcr.io/hfossedu/kitcon
+            ghcr.io/hfossedu/kitclient
           tags: |
             type=ref,event=branch
             type=ref,event=pr
@@ -45,7 +45,7 @@ jobs:
         name: Log in to the Container registry
         uses: docker/login-action@v2
         with:
-          registry: ghcr.io/hfossedu/kitcon
+          registry: ghcr.io/hfossedu/kitclient
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       -
