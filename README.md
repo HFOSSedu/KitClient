@@ -2,7 +2,13 @@
 
 A development environment for use with the Kits.
 
+## Requires
+
+* [Docker](https://www.docker.com/)
+
 ## Quickstart
+
+With Docker running, open a terminal and enter:
 
 ```bash
 docker run --name KitClient --detach -p 6901:6901 -p 5901:5901 ghcr.io/hfossedu/kitclient
