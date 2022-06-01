@@ -1,33 +1,28 @@
 {
-  "name": "kitcon",
+  "name": "kitclient",
   "version": "1.0.0",
   "description": "A development environment for use with the Kits.",
   "directories": {
     "doc": "docs"
   },
   "dependencies": {},
-  "devDependencies": {
-    "markdown-link-check": "^3.10.2",
-    "markdownlint": "^0.25.1",
-    "markdownlint-cli2": "^0.4.0"
-  },
+  "devDependencies": {},
   "scripts": {
-    "test": "npm run lint-markdown && npm run check-links",
-    "lint-markdown": "markdownlint-cli2 \"**/*.md\" \"#node_modules\"",
-    "check-links": "find . -name node_modules -prune -or -name \\*.md -print0 | xargs -0 -n1 markdown-link-check"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HFOSSedu/kitcon.git"
+    "url": "git+https://github.com/HFOSSedu/kitclient.git"
   },
   "author": "",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/HFOSSedu/kitcon/issues"
+    "url": "https://github.com/HFOSSedu/kitclient/issues"
   },
-  "homepage": "https://github.com/HFOSSedu/kitcon#readme",
+  "homepage": "https://github.com/HFOSSedu/kitclient#readme",
   "release": {
-    "branches": [ "main" ],
+    "branches": [
+      "main"
+    ],
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/github"
