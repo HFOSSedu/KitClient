@@ -68,7 +68,7 @@ and is available for most operating systems.
     docker rm KitClient
     ```
 
-## Remove kticon from your system
+## Remove KitClient from your system
 
 1. Stop and remove all KitClient instances (see sections above for instructions).
 2. Open a terminal and run
