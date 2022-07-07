@@ -23,8 +23,8 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN apt-get update && \
     apt-get -y install --no-install-recommends \
         wget=1.20.3-1ubuntu2 \
-        gpg=2.2.19-3ubuntu2.1 \
-        apt-transport-https=2.0.8 && \
+        gpg \
+        apt-transport-https && \
     wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg && \
     install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/ && \
     sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list' && \
@@ -35,5 +35,9 @@ RUN apt-get update && \
     apt-get -y --purge remove wget apt-transport-https && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+# Install git hook to install a kit after it is cloned.
+COPY ./install-kit-into-client.sh /usr/share/git-core/templates/hooks/post-checkout
+RUN chmod +x /usr/share/git-core/templates/hooks/post-checkout
 
 USER headless
