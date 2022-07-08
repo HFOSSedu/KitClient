@@ -26,8 +26,9 @@ uninstall-this-git-hook() {
 install-kit-features-into-client() {
     (
         cd "$SCRIPT_DIR/../.." || return 1
-        if [[ -e ./.kit/install-features-into-client/run.sh ]] ; then
-            ./.kit/install-features-into-client/run.sh
+        script="./.kit/features/install-features-into-client/run.sh"
+        if [[ -e "$script" ]] ; then
+            "$script"
         fi
     )
 }
