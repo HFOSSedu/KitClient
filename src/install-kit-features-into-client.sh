@@ -7,7 +7,7 @@ SCRIPT_DIR="$( cd -- "$( dirname -- "${SCRIPT_PATH}" )" &> /dev/null && pwd )"
 main() {
     exit-if-not-installed-as-a-git-hook
     uninstall-this-git-hook
-    install-kit-into-client
+    install-kit-features-into-client
 }
 
 exit-if-not-installed-as-a-git-hook() {
@@ -26,7 +26,9 @@ uninstall-this-git-hook() {
 install-kit-features-into-client() {
     (
         cd "$SCRIPT_DIR/../.." || return 1
-        ./.kit/install-features-into-client/run.sh
+        if [[ -e ./.kit/install-features-into-client/run.sh ]] ; then
+            ./.kit/install-features-into-client/run.sh
+        fi
     )
 }
 
