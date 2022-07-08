@@ -37,7 +37,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install git hook to install a kit after it is cloned.
-COPY ./install-kit-into-client.sh /usr/share/git-core/templates/hooks/post-checkout
+COPY ./install-kit-features-into-client.sh /usr/share/git-core/templates/hooks/post-checkout
 RUN chmod +x /usr/share/git-core/templates/hooks/post-checkout
 
 USER headless

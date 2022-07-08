@@ -24,10 +24,10 @@ uninstall-this-git-hook() {
     mv "${SCRIPT_PATH}" "${SCRIPT_DIR}/${SCRIPT_NAME}.disabled"
 }
 
-install-kit-into-client() {
+install-kit-features-into-client() {
     (
         cd "$SCRIPT_DIR/../.."
-        ./.kit/install-into-client.sh
+        ./.kit/install-features-into-client/run.sh
     )
 }
 
