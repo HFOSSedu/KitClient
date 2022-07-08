@@ -3,7 +3,6 @@
 SCRIPT_PATH="${BASH_SOURCE[0]}"
 SCRIPT_NAME="$( basename -- "${SCRIPT_PATH}" )"
 SCRIPT_DIR="$( cd -- "$( dirname -- "${SCRIPT_PATH}" )" &> /dev/null && pwd )"
-SCRIPT_DIR_NAME="$( basename -- ${SCRIPT_DIR} )"
 
 main() {
     exit-if-not-installed-as-a-git-hook
@@ -26,7 +25,7 @@ uninstall-this-git-hook() {
 
 install-kit-features-into-client() {
     (
-        cd "$SCRIPT_DIR/../.."
+        cd "$SCRIPT_DIR/../.." || return 1
         ./.kit/install-features-into-client/run.sh
     )
 }
