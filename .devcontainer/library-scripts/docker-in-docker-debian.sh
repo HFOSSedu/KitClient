@@ -9,6 +9,8 @@
 #
 # Syntax: ./docker-in-docker-debian.sh [enable non-root docker access flag] [non-root user] [use moby] [Engine/CLI Version] [Major version for docker-compose]
 
+# shellcheck ignore=SC2046,SC2068,SC2086,SC1090,SC2012,SC2236,SC2034,SC2154
+
 ENABLE_NONROOT_DOCKER=${1:-"true"}
 USERNAME=${2:-"automatic"}
 USE_MOBY=${3:-"true"}
@@ -95,7 +97,7 @@ find_version_from_git_tags() {
     local repository=$2
     local prefix=${3:-"tags/v"}
     local separator=${4:-"."}
-    local last_part_optional=${5:-"false"}    
+    local last_part_optional=${5:-"false"}
     if [ "$(echo "${requested_version}" | grep -o "." | wc -l)" != "2" ]; then
         local escaped_separator=${separator//./\\.}
         local last_part
