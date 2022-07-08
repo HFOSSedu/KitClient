@@ -9,7 +9,7 @@
 #
 # Syntax: ./docker-in-docker-debian.sh [enable non-root docker access flag] [non-root user] [use moby] [Engine/CLI Version] [Major version for docker-compose]
 
-# shellcheck ignore=SC2046,SC2068,SC2086,SC1090,SC2012,SC2236,SC2034,SC2154
+# shellcheck disable=SC2046,SC2068,SC2086,SC1090,SC2012,SC2236,SC2034,SC2154
 
 ENABLE_NONROOT_DOCKER=${1:-"true"}
 USERNAME=${2:-"automatic"}

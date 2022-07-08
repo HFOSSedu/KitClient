@@ -9,7 +9,7 @@
 #
 # Syntax: ./common-debian.sh [install zsh flag] [username] [user UID] [user GID] [upgrade packages flag] [install Oh My Zsh! flag] [Add non-free packages]
 
-# shellcheck ignore=SC2046,SC2068,SC2086,SC1090,SC2012,SC2236,SC2034,SC2154
+# shellcheck disable=SC2046,SC2068,SC2086,SC1090,SC2012,SC2236,SC2034,SC2154
 
 set -e
 
